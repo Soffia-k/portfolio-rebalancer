@@ -43,3 +43,30 @@ notification to the investor.
 | Instrument catalog with the latest quotes |
 | Instrument card (quote history, metadata) |
 | Portfolio dashboard (value, return, allocation, drift) |
+
+## 4. Starting the application
+
+```bash
+./gradlew bootRun
+```
+App: http://localhost:8080
+
+## 5. Endpoints
+
+| Method | URL | Description |
+|---|---|---|
+| GET | `/api/v1/investors` | list of investors |
+| GET | `/api/v1/investors/{id}` | investor by id (404 if not found) |
+| GET | `/api/v1/portfolios` | list of portfolios |
+| GET | `/api/v1/portfolios/{id}` | portfolio by id |
+| GET | `/api/v1/portfolios/by-investor/{investorId}` | portfolios of a given investor |
+| GET | `/api/v1/instruments` | list of instruments |
+| GET | `/api/v1/instruments/{id}` | instrument by id |
+| GET | `/api/v1/instruments/by-type/{type}` | instruments by type (`STOCK` / `BOND`) |
+
+## Example requests
+
+```bash
+# list of investors
+curl http://localhost:8080/api/v1/investors
+```
