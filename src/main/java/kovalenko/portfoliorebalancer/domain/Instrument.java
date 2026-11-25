@@ -1,4 +1,4 @@
-package ru.kovalenko.portfoliorebalancer.domain;
+package kovalenko.portfoliorebalancer.domain;
 
 public class Instrument {
     public enum Type { STOCK, BOND }

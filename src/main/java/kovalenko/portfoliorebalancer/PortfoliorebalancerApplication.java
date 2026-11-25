@@ -1,4 +1,4 @@
-package ru.kovalenko.portfoliorebalancer;
+package kovalenko.portfoliorebalancer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

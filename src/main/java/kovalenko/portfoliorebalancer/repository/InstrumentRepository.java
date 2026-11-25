@@ -1,7 +1,7 @@
-package ru.kovalenko.portfoliorebalancer.repository;
+package kovalenko.portfoliorebalancer.repository;
 
 import org.springframework.stereotype.Repository;
-import ru.kovalenko.portfoliorebalancer.domain.Instrument;
+import kovalenko.portfoliorebalancer.domain.Instrument;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,5 +39,27 @@ public class InstrumentRepository {
         return storage.values().stream()
                 .filter(i -> i.getType() == type)
                 .toList();
+    }
+
+    public boolean existsByTicker(String ticker) {
+        return storage.values().stream()
+                .anyMatch(i -> i.getTicker().equalsIgnoreCase(ticker));
+    }
+
+    public Optional<Instrument> update(Long id, Instrument updated) {
+        if (!storage.containsKey(id)) {
+            return Optional.empty();
+        }
+        updated.setId(id);
+        storage.put(id, updated);
+        return Optional.of(updated);
+    }
+
+    public boolean deleteById(Long id) {
+        return storage.remove(id) != null;
+    }
+
+    public boolean existsById(Long id) {
+        return storage.containsKey(id);
     }
 }

@@ -53,16 +53,17 @@ App: http://localhost:8080
 
 ## 5. Endpoints
 
-| Method | URL | Description |
-|---|---|---|
-| GET | `/api/v1/investors` | list of investors |
-| GET | `/api/v1/investors/{id}` | investor by id (404 if not found) |
-| GET | `/api/v1/portfolios` | list of portfolios |
-| GET | `/api/v1/portfolios/{id}` | portfolio by id |
-| GET | `/api/v1/portfolios/by-investor/{investorId}` | portfolios of a given investor |
-| GET | `/api/v1/instruments` | list of instruments |
-| GET | `/api/v1/instruments/{id}` | instrument by id |
-| GET | `/api/v1/instruments/by-type/{type}` | instruments by type (`STOCK` / `BOND`) |
+| Method | URL | Description | Success | Errors |
+|---|---|---|---|---|
+| GET | `/api/v1/investors` | list investors | 200 | — |
+| GET | `/api/v1/investors/{id}` | investor by id | 200 | 404 |
+| POST | `/api/v1/investors` | create investor | 201 + Location | 400 |
+| PATCH | `/api/v1/investors/{id}` | update investor | 200 | 400, 404 |
+| DELETE | `/api/v1/investors/{id}` | delete investor | 204 | 404, 409 |
+| GET | `/api/v1/portfolios` | list portfolios | 200 | — |
+| GET | `/api/v1/portfolios/{id}` | portfolio by id | 200 | 404 |
+| GET | `/api/v1/portfolios/by-investor/{investorId}` | portfolios of investor | 200 | 404 |
+| POST | `/api/v1/portfolios
 
 ## Example requests
 

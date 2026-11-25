@@ -1,7 +1,7 @@
-package ru.kovalenko.portfoliorebalancer.repository;
+package kovalenko.portfoliorebalancer.repository;
 
 import org.springframework.stereotype.Repository;
-import ru.kovalenko.portfoliorebalancer.domain.Portfolio;
+import kovalenko.portfoliorebalancer.domain.Portfolio;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,5 +39,22 @@ public class PortfolioRepository {
         return storage.values().stream()
                 .filter(p -> investorId.equals(p.getInvestorId()))
                 .toList();
+    }
+
+    public Optional<Portfolio> update(Long id, Portfolio updated) {
+        if (!storage.containsKey(id)) {
+            return Optional.empty();
+        }
+        updated.setId(id);
+        storage.put(id, updated);
+        return Optional.of(updated);
+    }
+
+    public boolean deleteById(Long id) {
+        return storage.remove(id) != null;
+    }
+
+    public boolean existsById(Long id) {
+        return storage.containsKey(id);
     }
 }
